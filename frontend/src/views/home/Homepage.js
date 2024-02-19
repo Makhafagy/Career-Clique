@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import UserLogin from '../user/login/UserLogin';
 
 const Homepage = () => {
   const [activeTab, setActiveTab] = useState('home');
@@ -16,6 +17,7 @@ const Homepage = () => {
       </div>
       <div className="tab-content">
         {activeTab === 'home' && <h2>Welcome to the homepage!</h2>}
+        {activeTab === 'user' && <UserLogin />}
         {/* Add content for other tabs as needed */}
       </div>
     </div>
