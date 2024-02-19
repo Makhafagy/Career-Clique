@@ -1,15 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import App from './components/App'
-import LoginForm from './views/user/login/UserLogin'
+import App from './App'
 import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
   <React.StrictMode>
     <div>
       <App /> {/* Render the App component */}
-      <LoginForm /> {/* Render the LoginForm component */}
     </div>
   </React.StrictMode>,
   document.getElementById('root')
