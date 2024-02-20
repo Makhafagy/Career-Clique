@@ -1,43 +1,88 @@
-/* components/UserLogin.css */
+/* UserLogin.css */
 
-.login-container {
-  width: 400px; /* Set width of the login container */
-  margin: 0 auto; /* Center align the container */
-  padding: 40px; /* Add padding to the container */
-  background-color: #333; /* Set background color */
-  border-radius: 10px; /* Add border radius for rounded corners */
+.login-container, .form-container {
+  width: 500px;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #000000;
+  border-radius: 10px;
+  box-sizing: border-box;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(45deg, #1c1c1c 25%, transparent 25%, transparent 75%, #3e3d3d 75%, #3b3a3a 100%);
+  background-size: 10px 10px;
+  border-bottom: 2px solid #fff;
+  border-top: 2px solid #fff;
+}
+
+.login-container-title {
+  font-size: 72px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  margin-left: -10px;
+  margin-bottom: 20px;
+  margin-top: auto;
 }
 
 .login-title {
-  font-size: 32px; /* Increase font size for the title */
-  color: #fff; /* Set text color to white for better contrast in dark mode */
-  text-align: center; /* Center align the title */
-  margin-bottom: 20px; /* Add some bottom margin for spacing */
+  font-size: 32px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .input-field {
-    width: calc(100% - 20px); /* Set the width of the input field (subtracting padding) */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .login-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .login-button:hover {
-    background-color: #0056b3;
-  }
-  
+.login-container-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 320px;
+  height: 2px;
+  background-color: #fff;
+  transform: translateX(-50%);
+}
+
+.login-container {
+  position: relative;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.input-field {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.login-signup-button {
+  width: 100%;
+  padding: 10px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #1dc204;
+  position: relative;
+}
