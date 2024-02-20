@@ -1,0 +1,43 @@
+/* components/UserLogin.css */
+
+.login-container {
+  width: 400px; /* Set width of the login container */
+  margin: 0 auto; /* Center align the container */
+  padding: 40px; /* Add padding to the container */
+  background-color: #333; /* Set background color */
+  border-radius: 10px; /* Add border radius for rounded corners */
+}
+
+.login-title {
+  font-size: 32px; /* Increase font size for the title */
+  color: #fff; /* Set text color to white for better contrast in dark mode */
+  text-align: center; /* Center align the title */
+  margin-bottom: 20px; /* Add some bottom margin for spacing */
+}
+
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .input-field {
+    width: calc(100% - 20px); /* Set the width of the input field (subtracting padding) */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-button:hover {
+    background-color: #0056b3;
+  }
+  
