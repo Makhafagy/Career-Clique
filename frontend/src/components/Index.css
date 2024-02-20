@@ -1,0 +1,58 @@
+/* components/MainContainer.css */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Set minimum height to fill up the viewport */
+    padding: 20px;
+    background-color: #131313; /* Set darker background color for the main container */
+  }
+  
+  .inner-container {
+    background-color: #333; /* Set darker background color for the inner container */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+  }
+  
+  .title {
+    font-size: 2.5rem; /* Make the title bigger */
+    color: #fff; /* Set text color to white for better contrast in dark mode */
+  }
+  
+  .tab {
+    padding: 12px 24px; /* Add padding to the tabs */
+    font-size: 18px; /* Increase font size for the tabs */
+    border-radius: 5px;
+    background-color: #000000;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 10px; /* Add space between tabs */
+    transition: background-color 0.3s ease; /* Add transition for smoother hover effect */
+  }
+  
+  .tab:hover {
+    background-color: #e68300; /* Change background color on hover */
+  }
+  
+  .tab.active {
+    background-color: #ff9500; /* Change background color for active tab */
+  }
+
+  /* components/Index.css */
+
+  .home-message {
+    font-size: 24px; /* Increase font size */
+    color: #fff; /* Set text color to white */
+    text-align: center; /* Center align text */
+    margin-top: 20px; /* Add some top margin */
+    font-style: italic; /* Apply italic style */
+  }
+  
+  
