@@ -5,8 +5,10 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
-const { NODE_ENV } = require('./config');
-const userRoutes = require('./routes/user/userRoutes'); // Import user routes
+const mongoose = require('mongoose');
+const { NODE_ENV, MONGODB_URI } = require('./config');
+
+const userRoutes = require('./routes/user/userRoutes');
 const app = express();
 const morganOption = process.env.NODE_ENV === 'production' ? 'tiny' : 'common';
 
@@ -16,6 +18,15 @@ app.use(cors());
 
 // Mount user routes
 app.use('/api/user', userRoutes);
+
+// Connect to MongoDB
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch(error => {
+    console.error('Error connecting to MongoDB:', error);
+  });
 
 app.use(function errorHandler(error, req, res, next) {
   let response;
