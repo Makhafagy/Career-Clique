@@ -1,8 +1,8 @@
 // tables/User.js
 
-const mongoose = require('mongoose');
-const userSchema = require('../schemas/UserSchema');
+const mongoose = require('mongoose')
+const userSchema = require('../schemas/UserSchema')
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema, 'User')
 
-module.exports = User;
+module.exports = User

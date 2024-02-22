@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import './../../components/user/UserLogin.css'
-import ToggleButtons from '../../components/user/UserToggleButtons'
+import { useNavigate, useLocation } from 'react-router-dom'
 import UserSignUp from './UserSignUp'
+import ToggleButtons from '../../components/user/UserToggleButtons'
+import './../../components/user/UserLogin.css'
 
 const UserLogin = () => {
   const navigate = useNavigate()
-
+  const location = useLocation()
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -22,10 +22,11 @@ const UserLogin = () => {
 
   const handleSubmit = async e => {
     e.preventDefault()
+    // Add your login logic here
   }
 
   const handleSignUp = () => {
-    navigate('/signup')
+    navigate('/user/signup')
     setShowSignUp(true)
     setShowLogin(false)
   }
@@ -64,7 +65,7 @@ const UserLogin = () => {
         </>
       )}
       {!showSignUp && showLogin && <ToggleButtons onToggle={handleSignUp} buttonText='Sign Up' />}
-      {showSignUp && <UserSignUp onLogin={handleLogin} />}
+      {showSignUp && location.pathname === '/user/signup' && <UserSignUp onLogin={handleLogin} />}
     </div>
   )
 }
