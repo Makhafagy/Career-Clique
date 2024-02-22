@@ -23,8 +23,7 @@ const UserSignUp = ({ onLogin }) => {
     try {
       // Send signup data to server
       // Adjust the URL with the correct route for signup
-      const response = await axios.post('/api/users/signup', formData)
-      console.log('User signed up:', response.data)
+      await axios.post('/api/users/signup', formData)
       // Optionally, handle successful signup
       navigate('/login')
       onLogin()

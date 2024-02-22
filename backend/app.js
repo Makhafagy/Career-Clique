@@ -22,24 +22,9 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
-// // Route handler for GET /api/users
-// app.get('/api/users', (req, res) => {
-//   // Assuming you want to send all users
-//   res.json({ users })
-// })
 
 // Mount user routes
 app.use('/api/users', userRoutes)
-
-// Serve static files from the React app
-// app.use(express.static(path.join(__dirname, '../client/build')))
-
-// // The "catchall" handler: for any request that doesn't
-// // match one above, send back React's index.html file.
-// app.get('*', (req, res) => {
-//   console.log('req.path', req.path)
-//   res.sendFile(path.join(__dirname + '../client/build/index.html'))
-// })
 
 // Connect to MongoDB
 mongoose
