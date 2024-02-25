@@ -7,19 +7,26 @@ Installation
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/project-name.git
+    git clone https://github.com/makhafagy/project-name.git
     ```
 
 2. Install dependencies:
 
     ```bash
-    cd project-name
+    cd project-name/backend
+    npm install
+    cd ..
+    cd frontend
     npm install
     ```
 
 3. Start the development server:
 
     ```bash
+    cd project-name/backend
+    npm run dev
+    cd ..
+    cd frontend
     npm start
     ```
 
@@ -42,10 +49,9 @@ Technologies Used
 Credits
 -------
 
-- This project was created by [Your Name].
-- Special thanks to [Any Contributors] for their valuable contributions.
+- This project was created by [Mahmoud Khafagy, Vong Chen, Marven Naeem, Govany Soliman].
 
 License
 -------
 
-This project is licensed under the [License Name] License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
