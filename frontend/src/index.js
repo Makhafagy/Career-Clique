@@ -1,24 +1,31 @@
+// index.js
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { BrowserRouter } from 'react-router-dom' // Import BrowserRouter
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+import UserSignUp from './views/user/UserSignUp'
+import UserLogin from './views/user/UserLogin'
+import HomePage from './views/home/HomePage'
+import User from './views/user/User'
+import { AuthProvider } from './auth/AuthContext'
 
-ReactDOM.render(
+createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      {' '}
-      {/* Wrap your App component with BrowserRouter */}
-      <div>
-        <App /> {/* Render the App component */}
-      </div>
+      <AuthProvider>
+        <Routes>
+          <Route path='/' element={<App />} />
+          <Route path='/home' element={<HomePage />} />
+          <Route path='/user/login' element={<UserLogin />} />
+          <Route path='/user/signup' element={<UserSignUp />} />
+          <Route path='/user/profile' element={<User />} />
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 )
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals()

@@ -1,4 +1,32 @@
 /* UserSignUp.css */
+.signup-container, .form-container {
+  width: 500px;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #000000;
+  border-radius: 10px;
+  box-sizing: border-box;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(45deg, #1c1c1c 25%, transparent 25%, transparent 75%, #3e3d3d 75%, #3b3a3a 100%);
+  background-size: 10px 10px;
+  border-bottom: 2px solid #fff;
+  border-top: 2px solid #fff;
+}
+
+.signup-container-title {
+  font-size: 72px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  margin-left: -10px;
+  margin-bottom: 20px;
+  margin-top: auto;
+}
 
 .signup-title {
   font-size: 32px;
@@ -40,4 +68,15 @@
   border-radius: 5px;
   cursor: pointer;
   background-color: #1dc204;
+}
+
+.signup-return-to-home-button {
+  width: 100%;
+  padding: 10px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #5d5d5d;
+  position: relative;
 }

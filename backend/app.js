@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 // Mount user routes
-app.use('/api/users', userRoutes)
+app.use('/api/user', userRoutes)
 
 // Connect to MongoDB
 mongoose
