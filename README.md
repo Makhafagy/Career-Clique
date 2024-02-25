@@ -7,13 +7,13 @@ Installation
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/makhafagy/project-name.git
+    git clone https://github.com/makhafagy/career-clique.git
     ```
 
 2. Install dependencies:
 
     ```bash
-    cd project-name/backend
+    cd backend
     npm install
     cd ..
     cd frontend
@@ -23,13 +23,17 @@ Installation
 3. Start the development server:
 
     ```bash
-    cd project-name/backend
+    cd backend
     npm run dev
-    cd ..
+    ```
+
+4. Start the development client:
+
+    ```bash
     cd frontend
     npm start
     ```
-
+    
 4. Open your web browser and navigate to `http://localhost:3000` to view the application.
 
 Technologies Used
