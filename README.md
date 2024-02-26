@@ -53,7 +53,7 @@ Technologies Used
 Credits
 -------
 
-- This project was created by [Mahmoud Khafagy, Vong Chen, Marven Naeem, Govany Soliman].
+- This project was created by [Mahmoud Khafagy, Vong Chen, Marven Sahy, Govany Soliman].
 
 License
 -------
