@@ -86,3 +86,15 @@
   background-color: #1dc204;
   position: relative;
 }
+
+.login-return-to-home-button {
+  width: 100%;
+  padding: 10px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #5d5d5d;
+  position: relative;
+  margin-top: 20px;
+}
