@@ -10,6 +10,7 @@ import UserLogin from './views/user/UserLogin'
 import HomePage from './views/home/HomePage'
 import User from './views/user/User'
 import { AuthProvider } from './auth/AuthContext'
+import ProfileEdit from './views/profile/ProfileEdit'
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')).render(
           <Route path='/user/login' element={<UserLogin />} />
           <Route path='/user/signup' element={<UserSignUp />} />
           <Route path='/user/profile' element={<User />} />
+          <Route path='/user/profile/edit' element={<ProfileEdit />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

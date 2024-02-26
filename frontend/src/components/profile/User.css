@@ -3,6 +3,13 @@
     font-size: 20px;
     color: #ffffff; /* White text color */
   }
+
+  .profile-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+  }
   
   .username {
     font-weight: bold;
