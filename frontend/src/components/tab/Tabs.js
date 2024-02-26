@@ -3,6 +3,7 @@ import React from 'react'
 
 const Tabs = ({ activeTab, onTabChange, tabLabels }) => {
   const handleTabChange = tab => {
+    console.log(tab)
     onTabChange(tab)
   }
 

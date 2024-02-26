@@ -5,7 +5,7 @@ import Tabs from '../../components/tab/Tabs'
 import '../../components/Index.css'
 
 const AppHeader = () => {
-  const [activeTab, setActiveTab] = useState('Home')
+  const [activeTab, setActiveTab] = useState('')
   const navigate = useNavigate()
 
   const handleTabChange = tab => {
