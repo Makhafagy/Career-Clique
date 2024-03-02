@@ -4,7 +4,6 @@ import axios from 'axios'
 import UserSignUp from './UserSignUp'
 import ToggleButtons from '../../components/user/UserToggleButtons'
 import './../../components/user/UserLogin.css'
-import User from './User'
 import { useAuth } from '../../auth/AuthContext'
 
 const UserLogin = () => {
@@ -39,9 +38,9 @@ const UserLogin = () => {
       setUsername(username)
       // Redirect the user to the profile page
       navigate('/user/profile')
+      window.location.reload()
     } catch (error) {
       console.error('Login failed:', error.response.data.msg)
-      // Handle login error (e.g., display error message to the user)
     }
   }
 

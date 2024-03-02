@@ -1,15 +1,20 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom' // Import useNavigate
+import React, { useState, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import userProfileDefault from '../../components/assets/user-profile-default.svg'
+import pencilIcon from '../../components/assets/pencil-icon.png'
 import '../../components/profile/User.css'
-import userProfileDefault from '../../components/assets/user-profile-default.svg' // Import the SVG file
-import '../../components/profile/Profiles.css' // Import CSS file for additional styling
+import '../../components/profile/Profiles.css'
 
 const Profile = ({ username, email }) => {
   const [profilePicture, setProfilePicture] = useState(null)
-  const navigate = useNavigate() // Get the navigate function
+  const [isHovered, setIsHovered] = useState(false)
+  const fileInputRef = useRef(null)
+  const navigate = useNavigate()
 
   const handleEditProfile = () => {
-    navigate('/user/profile/edit') // Navigate to the edit profile page
+    navigate('/user/profile/edit')
+    window.location.reload()
   }
 
   const handleProfilePictureChange = e => {
@@ -17,22 +22,61 @@ const Profile = ({ username, email }) => {
     setProfilePicture(file)
   }
 
+  const handleEditPicture = async () => {
+    try {
+      const token = localStorage.getItem('token')
+      const userEmail = localStorage.getItem('email')
+      const username = localStorage.getItem('username')
+
+      if (!token || !userEmail || !username) {
+        console.error('Token, userEmail, or username not found in local storage')
+        return
+      }
+
+      const formData = new FormData()
+      // formData.append('profilePicture', profilePicture)
+      formData.append('email', userEmail)
+      formData.append('username', username)
+
+      await axios.post('/api/user/profile', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    } catch (error) {
+      console.error('Error updating profile picture:', error)
+    }
+  }
+
+  const handleClickFileInput = () => {
+    // Trigger the file input dialog
+    fileInputRef.current.click()
+  }
+
   return (
     <div className='profile-container'>
       <div className='profile-title'>
         <h2>Profile</h2>
       </div>
-      <div className='profile-picture-container'>
+      <div
+        className='profile-picture-container'
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={handleClickFileInput} // Open file input dialog when clicked
+      >
         <img className='profile-picture' src={profilePicture ? URL.createObjectURL(profilePicture) : userProfileDefault} alt='Profile' />
+        {isHovered && (
+          <button className='edit-picture-button' onClick={handleEditPicture}>
+            <img src={pencilIcon} alt='Edit' />
+          </button>
+        )}
       </div>
       <p>Username: {username}</p>
       <p>Email: {email}</p>
-      <div className='file-input-container'>
-        <input type='file' onChange={handleProfilePictureChange} />
-        {profilePicture && <span className='file-name'>{profilePicture.name}</span>}
-        {!profilePicture && <span className='no-file-selected'>No file selected</span>}
-      </div>
-      <button onClick={handleEditProfile}>Edit Profile</button> {/* Button to navigate to edit profile */}
+      {/* Hidden file input element */}
+      <input type='file' id='fileInput' ref={fileInputRef} onChange={handleProfilePictureChange} style={{ display: 'none' }} />
+      <button onClick={handleEditProfile}>Edit Profile</button>
     </div>
   )
 }

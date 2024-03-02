@@ -26,6 +26,7 @@ const UserSignUp = () => {
       await axios.post('/api/user/signup', formData)
       // Optionally, handle successful signup
       navigate('/user/profile')
+      window.location.reload()
     } catch (error) {
       console.error('Error signing up:', error)
       // Optionally, handle signup failure
