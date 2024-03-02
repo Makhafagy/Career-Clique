@@ -11,6 +11,7 @@ const helmet = require('helmet')
 const mongoose = require('mongoose')
 const { NODE_ENV, MONGODB_URI } = require('./config')
 
+const profileRoutes = require('./routes/profile/profileRoutes')
 const userRoutes = require('./routes/user/userRoutes')
 const app = express()
 const morganOption = process.env.NODE_ENV === 'production' ? 'tiny' : 'common'
@@ -23,12 +24,15 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
+// Mount user profile routes
+app.use('/api/user', profileRoutes)
+
 // Mount user routes
 app.use('/api/user', userRoutes)
 
 // Connect to MongoDB
 mongoose
-  .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(MONGODB_URI)
   .then(() => {
     console.log('Connected to MongoDB:', mongoose.connection.name)
   })

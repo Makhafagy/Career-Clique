@@ -3,49 +3,52 @@
   }
   
   .profile-title {
-    color: rgb(255, 255, 255); /* Set the color to white */
+    color: rgb(255, 255, 255);
   }
 
   .profile-picture-container {
-    width: 150px; /* Adjust the size as needed */
-    height: 150px; /* Adjust the size as needed */
+    position: relative;
+    width: 150px;
+    height: 150px;
     overflow: hidden;
-    border-radius: 50%; /* Make the container circular */
+    border-radius: 50%;
     margin: 0 auto;
   }
   
   .profile-picture {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cover the entire container, maintaining aspect ratio */
-    object-position: center; /* Center the image within the container */
+    object-fit: cover;
+    object-position: center;
   }
 
-/* Profile.css */
-/* Other styles... */
 
+/* Adjust file input container styles */
 .file-input-container {
-    position: relative;
-  }
-  
-  .file-input-container input[type='file'] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    z-index: 1;
-  }
-  
+  display: none;
+}
+
+.edit-picture-button {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 8px 50px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.edit-picture-button img {
+  width: 24px;
+  height: auto;
+}
+
   .file-name, .no-file-selected {
-    position: relative;
-    z-index: 0;
     color: white;
-    display: block;
   }
   
   .no-file-selected {
-    z-index: -1; /* Ensure this is behind the file name */
+    z-index: -1;
   }
   
