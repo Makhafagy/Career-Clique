@@ -6,6 +6,7 @@ import '../../components/dashboard/DashboardOptions.css'
 import csuf from '../../components/assets/titans_csuf.jpg'
 import AppHeader from '../header/AppHeader'
 import Education from '../../components/dashboard/Education'
+import Summary from '../../components/dashboard/Summary'
 
 const Dashboard = () => {
   const [isContainerExpanded, setIsContainerExpanded] = useState(false)
@@ -55,19 +56,7 @@ const Dashboard = () => {
           <img className='dashboard-picture' src={userProfileDefault} alt='Profile' />
         </div>
         <div className='main-container'>
-          <div className='summary-section'>
-            <h2>Summary</h2>
-            <p>
-              As a full-stack engineer with 5 years of experience, I have a proven track record of developing robust and scalable web applications. My
-              expertise includes front-end technologies like HTML, CSS, and JavaScript, as well as back-end technologies like Node.js, Express, and
-              databases such as MongoDB and SQL.
-            </p>
-            <p>
-              I am passionate about creating seamless user experiences and thrive in collaborative environments where I can contribute innovative
-              solutions to complex problems. With a strong foundation in software engineering principles and a passion for learning new technologies,
-              I am eager to take on new challenges and drive project success.
-            </p>
-          </div>
+          <Summary />
           <div className='education-section'>
             <h2>Education</h2>
             {/* Render multiple instances of EducationEntry */}
