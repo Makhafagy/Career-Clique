@@ -1,102 +1,74 @@
-/* components/Index.css */
-
 html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-  }
-  
-  .main-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    padding: 20px;
-    background-color: #131313;
-  }
-  
-  /* .body-container {
-    background-color: #1f1e1e;
-    /* padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
-  } */
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
 
-  .tab-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }  
-  
-  .tab-placeholder {
-    width: 200px;
-  }
-  
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #131313;
+}
+
 .title {
-    font-size: 4.5rem;
-    color: #fff;
-    padding: 20px;
-    border-bottom: 2px solid #fff;
-    margin-bottom: 20px;
-  }
-  
-  .tab-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }  
-  
-  .tab-placeholder {
-    width: 200px;
-  }
-  
-  .tab {
-    padding: 20px 80px;
-    font-size: 24px;
-    border-radius: 5px;
-    background-color: #000000;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  
-  .tab:hover {
-    background-color: #e68300;
-  }
-  
-  .tab.active {
-    background-color: #ff9500;
-  }
-  
-  .home-message {
-    font-size: 24px;
-    color: #fff;
-    text-align: center;
-    margin-top: 20px;
-    font-style: italic;
-  }
-  
+  font-size: 4.5rem;
+  color: #fff;
+  padding: 20px;
+  border-bottom: 2px solid #fff;
+  margin-bottom: 20px;
+}
+
+.tab-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.tab-placeholder {
+  width: 200px;
+}
+
+.tab {
+  padding: 20px 80px;
+  font-size: 24px;
+  border-radius: 5px;
+  background-color: #000000;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tab:hover,
+.tab.active {
+  background-color: #004de6;
+}
+
+.home-message {
+  font-size: 24px;
+  color: #fff;
+  text-align: center;
+  margin-top: 20px;
+  font-style: italic;
+}
+
 .button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: auto;
-    margin: 0 auto;
-  }
-  
-  .login-button {
-    background-color: #007bff;
-    color: #fff;
-  }
-  
-  .signup-button {
-    background-color: #28a745;
-    color: #fff;
-  }
-  
-  
-  
-  
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+  margin: 0 auto;
+}
+
+.login-button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.signup-button {
+  background-color: #28a745;
+  color: #fff;
+}

@@ -26,6 +26,11 @@ const AuthService = {
     return localStorage.getItem('username')
   },
 
+  getEmail: () => {
+    // Add a method to retrieve the username
+    return localStorage.getItem('email')
+  },
+
   // Other authentication-related methods
 }
 

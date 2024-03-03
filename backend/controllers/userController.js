@@ -1,12 +1,13 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/tables/User')
+const Profile = require('../models/tables/Profile')
 const bcrypt = require('bcrypt')
 const saltRounds = 10
 const { JWT_SECRET } = require('../config')
 
 const secretKey = JWT_SECRET
 
-exports.logIn = async (req, res) => {
+exports.login = async (req, res) => {
   const { emailOrUsername, password } = req.body
   try {
     // Fetch user from the database by email or username
@@ -29,6 +30,18 @@ exports.logIn = async (req, res) => {
     }
     const token = jwt.sign(payload, secretKey, { expiresIn: '1h' })
 
+    // Check if the user's profile exists
+    let profile = await Profile.findOne({ email: user.email })
+    if (!profile) {
+      // If profile doesn't exist, create a new one
+      profile = new Profile({
+        email: user.email,
+        username: user.username,
+        picture: null,
+      })
+      await profile.save()
+    }
+
     // Return the JWT token along with the success message
     res.status(200).json({ msg: 'Login successful', token, email: user.email, username: user.username })
   } catch (error) {
@@ -37,7 +50,7 @@ exports.logIn = async (req, res) => {
   }
 }
 
-exports.signUp = async (req, res, next) => {
+exports.signup = async (req, res, next) => {
   try {
     const { email, password, username } = req.body
 
