@@ -40,29 +40,31 @@ const User = () => {
   }, [])
 
   return (
-    <div className='main-container'>
-      <AppHeader />
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : isLoggedIn ? (
-        <div>
-          <div className='profile-content-container'>
-            {/* Render authenticated content here */}
-            <p className='welcome-message'>
-              Welcome <span className='username'>{username}</span>.
-            </p>
-            {/* Render Profile component */}
-            <Profile username={username} email={email} />
-            <UserLogout />
+    <div className='outer-container'>
+      <div className='main-container'>
+        <AppHeader />
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : isLoggedIn ? (
+          <div>
+            <div className='profile-content-container'>
+              {/* Render authenticated content here */}
+              <p className='welcome-message'>
+                Welcome <span className='username'>{username}</span>.
+              </p>
+              {/* Render Profile component */}
+              <Profile username={username} email={email} />
+              <UserLogout />
+            </div>
           </div>
-        </div>
-      ) : (
-        <div>
-          {/* Render content for users not logged in */}
-          <p>Please log in to access all features.</p>
-          <UserLogin />
-        </div>
-      )}
+        ) : (
+          <div>
+            {/* Render content for users not logged in */}
+            <p>Please log in to access all features.</p>
+            <UserLogin />
+          </div>
+        )}
+      </div>
     </div>
   )
 }

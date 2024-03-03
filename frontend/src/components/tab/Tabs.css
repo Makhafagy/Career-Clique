@@ -1,0 +1,33 @@
+  .tabs {
+    position: fixed;
+    top: 0; /* Stretch to the top of the outer container */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1f1e;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Adjust the opacity to make the border thinner */
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .tab {
+    padding: 10px 20px; /* Adjust padding as needed */
+    margin: 0 5px; /* Adjust margin between tabs */
+    font-size: 18px; /* Adjust font size */
+    border-radius: 5px;
+    background-color: #000000;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+  }
+  
+  .tab:hover,
+  .tab.active {
+    background-color: #004de6;
+  }
+  

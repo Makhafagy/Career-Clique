@@ -5,9 +5,12 @@ import AppHeader from '../header/AppHeader'
 
 const HomePage = ({ activeTab }) => {
   return (
-    <div className='main-container'>
-      <AppHeader />
-      {activeTab === 'home' && <h2>Home Page</h2>}
+    <div className='outer-container'>
+      <div className='main-container'>
+        <AppHeader />
+        {activeTab === 'home' && <h2>Home Page</h2>}
+        <h1 className='title'>Career Clique</h1>
+      </div>
     </div>
   )
 }

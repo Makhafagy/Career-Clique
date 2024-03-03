@@ -14,12 +14,11 @@ const AppHeader = () => {
     navigate(path)
   }
 
-  const tabLabels = ['Home', 'Profile']
-  const tabsPaths = ['/home', '/user/profile']
+  const tabLabels = ['Home', 'Dashboard', 'Profile']
+  const tabsPaths = ['/home', '/dashboard', '/user/profile']
 
   return (
     <div>
-      <h1 className='title'>Career Clique</h1>
       <Tabs activeTab={activeTab} onTabChange={handleTabChange} tabLabels={tabLabels} />
     </div>
   )
