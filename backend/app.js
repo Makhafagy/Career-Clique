@@ -11,6 +11,7 @@ const helmet = require('helmet')
 const mongoose = require('mongoose')
 const { NODE_ENV, MONGODB_URI } = require('./config')
 
+const dashboardRoutes = require('./routes/dashboard/dashboardRoutes')
 const profileRoutes = require('./routes/profile/profileRoutes')
 const userRoutes = require('./routes/user/userRoutes')
 const app = express()
@@ -23,6 +24,9 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
+
+// Mount user profile routes
+app.use('/api', dashboardRoutes)
 
 // Mount user profile routes
 app.use('/api/user', profileRoutes)
