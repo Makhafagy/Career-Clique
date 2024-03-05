@@ -7,7 +7,7 @@
   .dashboard-picture-container {
     position: fixed;
     bottom: 77%;
-    left: 3%;
+    left: 1%;
     width: 100px;
     height: 100px;
     overflow: hidden;
@@ -18,7 +18,7 @@
   .dashboard-container {
     position: fixed;
     bottom: 40%;
-    left: 8%;
+    left: 6%;
     transform: translateX(-50%);
     background-color: #222;
     padding: 20px;
@@ -51,14 +51,3 @@
   .dashboard-tab:hover {
     background-color: #444;
   }
-  
-  .education-section {
-    text-align: center;
-    justify-content: space-around;
-  }
-
-  .college-logo {
-    max-width: 80%;
-    height: auto;
-  }
-  

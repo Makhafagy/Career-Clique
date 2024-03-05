@@ -11,6 +11,7 @@ const helmet = require('helmet')
 const mongoose = require('mongoose')
 const { NODE_ENV, MONGODB_URI } = require('./config')
 
+const refreshTokenRoutes = require('./routes/refreshToken/refreshTokenRoutes');
 const dashboardRoutes = require('./routes/dashboard/dashboardRoutes')
 const profileRoutes = require('./routes/profile/profileRoutes')
 const userRoutes = require('./routes/user/userRoutes')
@@ -24,6 +25,9 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
+
+// Mount the token refreshing router
+app.use('/api', refreshTokenRoutes);
 
 // Mount user profile routes
 app.use('/api', dashboardRoutes)

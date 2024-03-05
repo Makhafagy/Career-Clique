@@ -2,7 +2,7 @@
 const mongoose = require('mongoose')
 
 const summarySchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Reference to the User collection
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   description: { type: String },
 })
 

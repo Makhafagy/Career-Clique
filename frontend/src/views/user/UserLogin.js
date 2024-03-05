@@ -36,11 +36,16 @@ const UserLogin = () => {
       setToken(token)
       setUsername(email)
       setUsername(username)
-      // Redirect the user to the profile page
-      navigate('/user/profile')
+      navigate('/dashboard')
       window.location.reload()
     } catch (error) {
-      console.error('Login failed:', error.response.data.msg)
+      if (error.response) {
+        console.error('Login failed:', error.response.data)
+      } else if (error.request) {
+        console.error('No response received:', error.request)
+      } else {
+        console.error('Error during request setup:', error.message)
+      }
     }
   }
 
@@ -58,6 +63,7 @@ const UserLogin = () => {
   return (
     <div className='outer-container'>
       <div className='main-container'>
+        <p className='login-request'>Please log in to access all features.</p>
         {showLogin && (
           <>
             <div className='login-container'>

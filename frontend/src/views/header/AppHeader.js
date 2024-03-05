@@ -1,12 +1,23 @@
-// InitialPage.js
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect, useMemo } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import Tabs from '../../components/tab/Tabs'
 import '../../components/Index.css'
+import { useAuth } from '../../auth/AuthContext' // Import useAuth hook
 
-const AppHeader = () => {
+const InitialPage = () => {
   const [activeTab, setActiveTab] = useState('')
+  const { isLoggedIn } = useAuth() // Use useAuth hook to access authentication status
   const navigate = useNavigate()
+  const location = useLocation()
+
+  const tabLabels = useMemo(() => ['Home', 'Dashboard', 'Profile'], []) // Initialize tabLabels with useMemo
+  const tabsPaths = ['/home', '/dashboard', '/user/profile']
+
+  useEffect(() => {
+    // Set the active tab based on the current location pathname
+    const currentTab = tabLabels.find(tab => location.pathname.includes(tab.toLowerCase()))
+    setActiveTab(currentTab || '')
+  }, [location.pathname, tabLabels])
 
   const handleTabChange = tab => {
     setActiveTab(tab)
@@ -14,14 +25,11 @@ const AppHeader = () => {
     navigate(path)
   }
 
-  const tabLabels = ['Home', 'Dashboard', 'Profile']
-  const tabsPaths = ['/home', '/dashboard', '/user/profile']
-
   return (
     <div>
-      <Tabs activeTab={activeTab} onTabChange={handleTabChange} tabLabels={tabLabels} />
+      <Tabs activeTab={activeTab} onTabChange={handleTabChange} tabLabels={tabLabels} isLoggedIn={isLoggedIn} />
     </div>
   )
 }
 
-export default AppHeader
+export default InitialPage

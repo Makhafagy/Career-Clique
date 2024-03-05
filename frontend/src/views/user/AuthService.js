@@ -1,12 +1,14 @@
+// AuthService.js
 import axios from 'axios'
 
 const AuthService = {
   login: async credentials => {
     try {
-      const response = await axios.post('/api/login', credentials)
-      localStorage.setItem('token', response.data.token)
-      localStorage.setItem('username', response.data.username) // Store the username in localStorage
-      return response.data.token
+      const response = await axios.post('/api/user/login', credentials)
+      const { token, username } = response.data
+      localStorage.setItem('token', token)
+      localStorage.setItem('username', username) // Store the username in localStorage
+      return { token, username }
     } catch (error) {
       throw new Error('Login failed')
     }
@@ -15,6 +17,7 @@ const AuthService = {
   logout: () => {
     // Clear the token from local storage
     localStorage.removeItem('token')
+    localStorage.removeItem('username')
   },
 
   getToken: () => {
