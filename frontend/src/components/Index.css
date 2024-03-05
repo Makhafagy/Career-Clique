@@ -2,14 +2,32 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  background-color: #131313;
+}
+
+.outer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .main-container {
+  position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  padding: 20px;
-  background-color: #131313;
+  align-items: left;
+  margin-top: 100px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #1e1e20;
+  max-width: 1200px;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .title {
@@ -18,32 +36,6 @@ html, body {
   padding: 20px;
   border-bottom: 2px solid #fff;
   margin-bottom: 20px;
-}
-
-.tab-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.tab-placeholder {
-  width: 200px;
-}
-
-.tab {
-  padding: 20px 80px;
-  font-size: 24px;
-  border-radius: 5px;
-  background-color: #000000;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.tab:hover,
-.tab.active {
-  background-color: #004de6;
 }
 
 .home-message {

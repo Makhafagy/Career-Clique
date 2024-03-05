@@ -1,9 +1,9 @@
 // components/Tabs.js
 import React from 'react'
+import './Tabs.css'
 
 const Tabs = ({ activeTab, onTabChange, tabLabels }) => {
   const handleTabChange = tab => {
-    console.log(tab)
     onTabChange(tab)
   }
 
