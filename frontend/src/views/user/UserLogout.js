@@ -1,18 +1,18 @@
 import React from 'react'
 import AuthService from './AuthService' // Import your AuthService
 import '../../components/user/UserLogout.css' // Import CSS file for styling
+import { useNavigate } from 'react-router-dom'
 
 const UserLogout = () => {
+  const navigate = useNavigate()
   const handleLogout = () => {
-    // Call the logout method from AuthService
     AuthService.logout()
-    // Redirect the user to the login page or any other desired page
-    window.location.href = '/user/profile'
+    navigate('/home')
+    window.location.reload()
   }
 
   return (
     <div>
-      {/* Render a button to trigger logout */}
       <button className='logout-button' onClick={handleLogout}>
         Logout
       </button>

@@ -41,26 +41,24 @@ const User = () => {
 
   return (
     <div className='outer-container'>
-      <div className='main-container'>
+      <div className='user-container'>
         <AppHeader />
         {isLoading ? (
           <p>Loading...</p>
         ) : isLoggedIn ? (
           <div>
-            <div className='profile-content-container'>
-              {/* Render authenticated content here */}
-              <p className='welcome-message'>
-                Welcome <span className='username'>{username}</span>.
-              </p>
+            <div className='user-content-container'>
               {/* Render Profile component */}
               <Profile username={username} email={email} />
+            </div>
+            <div style={{ alignSelf: 'flex-start' }}>
+              {' '}
               <UserLogout />
             </div>
           </div>
         ) : (
           <div>
             {/* Render content for users not logged in */}
-            <p>Please log in to access all features.</p>
             <UserLogin />
           </div>
         )}

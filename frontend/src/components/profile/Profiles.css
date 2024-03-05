@@ -14,7 +14,7 @@
     border-radius: 50%;
     margin: 0 auto;
   }
-  
+
   .profile-picture {
     width: 100%;
     height: 100%;
@@ -22,27 +22,25 @@
     object-position: center;
   }
 
+  .file-input-container {
+    display: none;
+  }
 
-/* Adjust file input container styles */
-.file-input-container {
-  display: none;
-}
+  .edit-picture-button {
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 8px 50px;
+    border-radius: 50px;
+    cursor: pointer;
+  }
 
-.edit-picture-button {
-  position: absolute;
-  bottom: 0%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 8px 50px;
-  border-radius: 50px;
-  cursor: pointer;
-}
-
-.edit-picture-button img {
-  width: 24px;
-  height: auto;
-}
+  .edit-picture-button img {
+    width: 24px;
+    height: auto;
+  }
 
   .file-name, .no-file-selected {
     color: white;

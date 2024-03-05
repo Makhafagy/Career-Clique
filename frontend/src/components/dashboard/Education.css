@@ -1,0 +1,63 @@
+.education-section {
+  text-align: center;
+  min-height: 1000px; /* Maintain minimum height */
+  max-width: 1200px; /* Limit the width */
+  position: relative;
+  border-bottom: 1px solid #ccc; /* Add border line at the bottom */
+}
+
+.education-section .title {
+  font-size: 4.5rem;
+  color: #fff;
+  padding: 20px;
+  border-bottom: 2px solid #fff;
+  margin-bottom: 20px;
+}
+
+.education-grid {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted for responsiveness */
+  justify-content: center; /* Center the grid items horizontally */
+  grid-gap: 20px;
+}
+
+.college-logo {
+  max-width: 90%;
+  height: auto;
+  width: 1040px;
+  height: 300px; /* Maintain aspect ratio */
+  transition: filter 0.3s ease, transform 0.3s ease; /* Add transition for smooth animation */
+}
+
+.college-entry:hover .college-logo {
+  transform: scale(1.1); /* Increase size on hover */
+}
+
+.college-logo.blur {
+  filter: blur(5px); /* Adjust blur intensity as needed */
+}
+
+.college-entry {
+  position: relative; /* Ensure relative positioning for the tooltip */
+}
+
+.tooltip {
+  position: absolute;
+  top: 50%; /* Position the tooltip in the middle of the image */
+  left: 50%; /* Position the tooltip in the middle of the image */
+  transform: translate(-50%, -50%); /* Center the tooltip */
+  background-color: rgba(138, 80, 80, 0.9);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s ease;
+  z-index: 1; /* Ensure the tooltip appears above the image */
+}
+
+.college-entry:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
