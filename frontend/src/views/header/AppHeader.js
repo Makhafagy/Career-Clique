@@ -10,8 +10,8 @@ const InitialPage = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const tabLabels = useMemo(() => ['Home', 'Dashboard', 'Profile'], []) // Initialize tabLabels with useMemo
-  const tabsPaths = ['/home', '/dashboard', '/user/profile']
+  const tabLabels = useMemo(() => ['Home', 'Dashboard', 'Services', 'Profile'], []) // Initialize tabLabels with useMemo
+  const tabsPaths = ['/home', '/dashboard', '/service', '/user/profile']
 
   useEffect(() => {
     // Set the active tab based on the current location pathname
@@ -23,6 +23,7 @@ const InitialPage = () => {
     setActiveTab(tab)
     const path = tabsPaths[tabLabels.indexOf(tab)]
     navigate(path)
+    // window.location.reload() //recommended, however we need to figure out why /dashboard takes us to profile everytime we refresh it
   }
 
   return (
