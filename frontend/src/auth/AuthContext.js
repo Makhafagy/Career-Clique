@@ -13,13 +13,13 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('token')
     localStorage.removeItem('username')
     localStorage.removeItem('tokenExpiration')
+    console.log('we force logout?')
     setIsLoggedIn(false)
     setUsername('')
     navigate('/user/login')
   }, [navigate])
 
   useEffect(() => {
-    // Check if user is already logged in when the app loads
     const token = localStorage.getItem('token')
     const user = localStorage.getItem('username')
     if (token && user) {
@@ -29,7 +29,8 @@ export const AuthProvider = ({ children }) => {
       // Check token expiration
       const tokenExpiration = localStorage.getItem('tokenExpiration')
       if (tokenExpiration && Date.now() > Number(tokenExpiration)) {
-        logout()
+        console.log('session expired')
+        logout() // Log out if token is expired
       }
     }
   }, [logout])
@@ -44,12 +45,25 @@ export const AuthProvider = ({ children }) => {
       const expiration = Date.now() + 3600000 // 1 hour in milliseconds
       localStorage.setItem('tokenExpiration', expiration)
       setIsLoggedIn(true)
+      console.log('we not logout?')
       setUsername(username)
       navigate('/dashboard')
     } catch (error) {
       console.error('Login failed:', error.response.data.msg)
     }
   }
+
+  // Add axios request interceptor to handle token expiry
+  axios.interceptors.response.use(
+    response => response,
+    error => {
+      if (error.response && error.response.status === 401) {
+        // Handle Unauthorized error (token expired or invalid)
+        logout()
+      }
+      return Promise.reject(error)
+    }
+  )
 
   return <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, login, logout, username }}>{children}</AuthContext.Provider>
 }

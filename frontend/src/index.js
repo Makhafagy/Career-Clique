@@ -8,6 +8,7 @@ import UserSignUp from './views/user/UserSignUp'
 import UserLogin from './views/user/UserLogin'
 import HomePage from './views/home/HomePage'
 import Dashboard from './views/dashboard/Dashboard'
+import Service from './views/service/Service'
 import User from './views/user/User'
 import { AuthProvider } from './auth/AuthContext'
 import ProfileEdit from './views/profile/ProfileEdit'
@@ -29,6 +30,14 @@ createRoot(document.getElementById('root')).render(
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/service'
+            element={
+              <ProtectedRoute>
+                <Service />
               </ProtectedRoute>
             }
           />

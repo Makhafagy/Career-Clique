@@ -28,11 +28,14 @@ const UserLogin = () => {
   const handleSubmit = async e => {
     e.preventDefault()
     try {
+      const expiration = Date.now() + 3600000
       const response = await axios.post('/api/user/login', formData)
       const { token, email, username } = response.data
       localStorage.setItem('token', token)
       localStorage.setItem('email', email)
       localStorage.setItem('username', username)
+      localStorage.setItem('tokenExpiration', expiration)
+
       setToken(token)
       setUsername(email)
       setUsername(username)
