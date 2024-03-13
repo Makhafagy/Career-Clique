@@ -7,7 +7,6 @@ const UserLogout = () => {
   const navigate = useNavigate()
   const handleLogout = () => {
     AuthService.logout()
-    console.log('we logged out?')
     navigate('/user/login')
     window.location.reload()
   }

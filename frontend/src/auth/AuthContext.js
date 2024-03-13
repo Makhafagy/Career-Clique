@@ -13,7 +13,6 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('token')
     localStorage.removeItem('username')
     localStorage.removeItem('tokenExpiration')
-    console.log('we force logout?')
     setIsLoggedIn(false)
     setUsername('')
     navigate('/user/login')
@@ -29,7 +28,6 @@ export const AuthProvider = ({ children }) => {
       // Check token expiration
       const tokenExpiration = localStorage.getItem('tokenExpiration')
       if (tokenExpiration && Date.now() > Number(tokenExpiration)) {
-        console.log('session expired')
         logout() // Log out if token is expired
       }
     }
@@ -45,7 +43,6 @@ export const AuthProvider = ({ children }) => {
       const expiration = Date.now() + 3600000 // 1 hour in milliseconds
       localStorage.setItem('tokenExpiration', expiration)
       setIsLoggedIn(true)
-      console.log('we not logout?')
       setUsername(username)
       navigate('/dashboard')
     } catch (error) {
