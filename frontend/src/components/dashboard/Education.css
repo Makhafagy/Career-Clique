@@ -3,7 +3,8 @@
   min-height: 1000px; /* Maintain minimum height */
   max-width: 1200px; /* Limit the width */
   position: relative;
-  border-bottom: 1px solid #ccc; /* Add border line at the bottom */
+  border-bottom: 2px solid #fff; /* Add border line at the bottom */
+  margin-bottom: 20px;
 }
 
 .education-section .title {
