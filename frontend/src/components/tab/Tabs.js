@@ -11,7 +11,7 @@ const Tabs = ({ activeTab, onTabChange, tabLabels, isLoggedIn }) => {
     <div className='tabs'>
       {tabLabels.map(
         (label, index) =>
-          (label !== 'Dashboard' || isLoggedIn) && (
+          ((label !== 'Dashboard' && label !== 'Services') || isLoggedIn) && (
             <button key={label} onClick={() => handleTabChange(label)} className={activeTab === label ? 'tab active' : 'tab'}>
               {label}
             </button>

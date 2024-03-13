@@ -24,7 +24,6 @@ const Education = forwardRef((props, ref) => {
         })
 
         setEducationData(response.data)
-        console.log(response.data)
         setIsLoading(false)
       } catch (error) {
         console.error('Error fetching education details:', error)

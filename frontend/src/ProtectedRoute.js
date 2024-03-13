@@ -3,9 +3,12 @@ import { Navigate } from 'react-router-dom'
 import { useAuth } from './auth/AuthContext'
 
 export const ProtectedRoute = ({ children }) => {
-  const { isLoggedIn } = useAuth() // Get authentication status
+  const { tokenExpiration } = useAuth() // Get token expiration timestamp
 
-  if (!isLoggedIn) {
+  // Check if the token is expired
+  const isTokenExpired = tokenExpiration && Date.now() > tokenExpiration
+
+  if (isTokenExpired) {
     return <Navigate to='/user/profile' />
   }
 
