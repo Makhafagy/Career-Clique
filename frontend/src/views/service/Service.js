@@ -28,9 +28,7 @@ const Service = () => {
   useEffect(() => {
     const checkTokenExpiration = () => {
       const tokenExpiration = localStorage.getItem('tokenExpiration')
-      console.log(tokenExpiration)
       if (tokenExpiration && Date.now() > Number(tokenExpiration)) {
-        console.log('session expired')
         AuthService.logout() // Logout if token is expired
         setIsTokenExpired(true) // Update state to indicate token expiration
         navigate('/user/login')
