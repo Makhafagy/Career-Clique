@@ -1,4 +1,4 @@
-import React, { useState, useEffect, forwardRef } from 'react'
+import React, { useState, forwardRef } from 'react'
 import './Resume.css'
 
 const Resume = forwardRef((props, ref) => {
@@ -10,15 +10,19 @@ const Resume = forwardRef((props, ref) => {
   }
 
   return (
-    <div ref={ref} div className='resume-section'>
+    <div ref={ref} className='resume-section'>
       <div className='dashboard-title'>Resume</div>
-      <h2>Upload PDF</h2>
-      <input type='file' onChange={handleFileChange} accept='.pdf' />
+      <div className='upload-container'>
+        <h2>
+          Upload PDF:
+          <input type='file' onChange={handleFileChange} accept='.pdf' />
+        </h2>
+      </div>
 
       {selectedFile && (
         <div className='resume-content'>
           <h3>PDF Preview:</h3>
-          <iframe src={URL.createObjectURL(selectedFile)} style={{ width: '100%', height: '800px' }} title='resume-title'></iframe>
+          <iframe src={URL.createObjectURL(selectedFile)} title='resume-title'></iframe>
         </div>
       )}
     </div>
