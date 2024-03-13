@@ -6,9 +6,9 @@ import '../../components/dashboard/DashboardOptions.css'
 import AppHeader from '../header/AppHeader'
 import Summary from '../../components/dashboard/Summary'
 import Education from '../../components/dashboard/Education'
-import UserLogout from '../user/UserLogout' // Import your Logout component
-import AuthService from '../user/AuthService' // Import your AuthService
-import Resume from '../../components/dashboard/Resume' // Import the Resume component
+import UserLogout from '../user/UserLogout'
+import AuthService from '../user/AuthService'
+import Resume from '../../components/dashboard/Resume'
 
 const Dashboard = () => {
   const [isContainerExpanded, setIsContainerExpanded] = useState(false)

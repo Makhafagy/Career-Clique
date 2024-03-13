@@ -1,33 +1,14 @@
-.resume-container {
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .pdf-container {
-    margin-top: 20px;
-  }
-  
-  .pdf-container p {
+.resume-section {
     text-align: center;
-    margin-top: 10px;
+    max-width: 1200px;
+    min-height: 1000px;
+    position: relative;
+    border-bottom: 1px solid #ccc; /* Add border line at the bottom */
   }
-  
-  input[type="file"] {
-    margin-bottom: 10px;
+
+  .resume-content {
+    background-color: rgb(52, 53, 53);
+    border-radius: 10px;
+    padding: 20px;
+    width: 1000px;
   }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
