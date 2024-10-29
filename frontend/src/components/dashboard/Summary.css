@@ -3,7 +3,7 @@
     max-width: 1200px;
     min-height: 1000px;
     position: relative;
-    border-bottom: 1px solid #ccc; /* Add border line at the bottom */
+    border-bottom: 2px solid #fff; /* Add border line at the bottom */
   }
   .edit-summary-button {
     position: relative;

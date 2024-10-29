@@ -6,8 +6,9 @@ import '../../components/dashboard/DashboardOptions.css'
 import AppHeader from '../header/AppHeader'
 import Summary from '../../components/dashboard/Summary'
 import Education from '../../components/dashboard/Education'
-import UserLogout from '../user/UserLogout' // Import your Logout component
-import AuthService from '../user/AuthService' // Import your AuthService
+import UserLogout from '../user/UserLogout'
+import AuthService from '../user/AuthService'
+import Resume from '../../components/dashboard/Resume'
 
 const Dashboard = () => {
   const [isContainerExpanded, setIsContainerExpanded] = useState(false)
@@ -15,6 +16,7 @@ const Dashboard = () => {
   const [isTokenExpired, setIsTokenExpired] = useState(false) // State to track token expiration
   const navigate = useNavigate()
   const dashboardRef = useRef(null)
+  const resumeRef = useRef(null)
   const summaryRef = useRef(null)
   const educationRef = useRef(null)
   const experienceRef = useRef(null)
@@ -23,7 +25,9 @@ const Dashboard = () => {
 
   const handleTabClick = tab => {
     const sectionRef =
-      tab === 'summary'
+      tab === 'resume'
+        ? resumeRef.current
+        : tab === 'summary'
         ? summaryRef.current
         : tab === 'education'
         ? educationRef.current
@@ -60,9 +64,7 @@ const Dashboard = () => {
   useEffect(() => {
     const checkTokenExpiration = () => {
       const tokenExpiration = localStorage.getItem('tokenExpiration')
-      console.log(tokenExpiration)
       if (tokenExpiration && Date.now() > Number(tokenExpiration)) {
-        console.log('session expired')
         AuthService.logout() // Logout if token is expired
         setIsTokenExpired(true) // Update state to indicate token expiration
         navigate('/user/login')
@@ -95,9 +97,14 @@ const Dashboard = () => {
         </div>
         <div className='main-container'>
           <h1 className='tab-title'>Dashboard</h1>
-          {!isTokenExpired && <Summary ref={summaryRef} />}
-          {!isTokenExpired && <Education ref={educationRef} />}
-          {/* Add other sections here */}
+          {!isTokenExpired && (
+            <>
+              <Summary ref={summaryRef} />
+              <Education ref={educationRef} />
+              <Resume ref={resumeRef} />
+              {/* Add other sections here */}
+            </>
+          )}
           {isHovered && <div className='education-info'>{/* Additional information for the hovered education entry */}</div>}
         </div>
 
@@ -118,6 +125,9 @@ const Dashboard = () => {
               </div>
               <div className='dashboard-tab' onClick={() => handleTabClick('contact')}>
                 Contact
+              </div>
+              <div className='dashboard-tab' onClick={() => handleTabClick('resume')}>
+                Resume
               </div>
             </div>
           </div>
