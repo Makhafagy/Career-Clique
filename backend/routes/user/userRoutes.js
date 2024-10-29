@@ -1,34 +1,26 @@
-// routes/user/userRoutes.js
-
 const express = require('express')
 const router = express.Router()
-
-// Import user controller
 const userController = require('../../controllers/userController')
+const authController = require('../../controllers/authController')
+const { authenticateToken } = require('../../middleware/authMiddleware');
 
-// Define user routes
-router.post('/register', userController.registerUser)
-router.post('/login', userController.loginUser)
+// GET route for listing users (remove /api/users prefix)
+// router.get('/signup', function (req, res, next) {
+//   res.send({ users: ['joe', 'bernie', 'tulsi', 'donald', 'bill'] })
+// })
 
-// POST /api/user/signup - Sign up a new user
-router.post('/signup', async (req, res, next) => {
-  try {
-    const { email, password } = req.body
+// // Protected route
+router.get('/login', authenticateToken, (req, res) => {
+  res.json({ message: 'Access granted', user: req.user });
+});
 
-    // Check if the user already exists
-    const existingUser = await User.findOne({ email })
-    if (existingUser) {
-      return res.status(400).json({ error: 'User already exists' })
-    }
+// // GET route for authentication endpoint
+// router.get('/authentication', authController.checkAuthentication)
 
-    // Create a new user document
-    const newUser = new User({ email, password })
-    await newUser.save()
+// POST route for user signup
+router.post('/signup', userController.signUp)
 
-    res.status(201).json({ message: 'User created successfully' })
-  } catch (error) {
-    next(error)
-  }
-})
+// POST route for user login
+router.post('/login', userController.logIn)
 
 module.exports = router

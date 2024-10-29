@@ -1,24 +1,16 @@
+// views/home/HomePage.js
 import React from 'react'
 import '../../components/Index.css'
-import UserLogin from '../user/UserLogin'
+import AppHeader from '../header/AppHeader'
 
-const Homepage = ({ activeTab, onTabChange }) => {
+const HomePage = ({ activeTab }) => {
   return (
-    <div>
-      <div className='tabs'>
-        <button onClick={() => onTabChange('home')} className={activeTab === 'home' ? 'tab active' : 'tab'}>
-          Home
-        </button>
-        <button onClick={() => onTabChange('user')} className={activeTab === 'user' ? 'tab active' : 'tab'}>
-          Profile
-        </button>
-      </div>
-      <div className='body-container'>
-        {activeTab === 'home' && <h2 className='home-message'>Welcome to the homepage!</h2>}
-        {activeTab === 'user' && <UserLogin />}
-      </div>
+    <div className='main-container'>
+      <h1 className='title'>Career Clique</h1>
+      <AppHeader />
+      {activeTab === 'home' && <h2>Home Page</h2>}
     </div>
   )
 }
 
-export default Homepage
+export default HomePage

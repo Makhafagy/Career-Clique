@@ -1,19 +1,25 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import './../../components/user/UserLogin.css'
-import ToggleButtons from '../../components/user/UserToggleButtons'
+import { useNavigate, useLocation } from 'react-router-dom'
+import axios from 'axios'
 import UserSignUp from './UserSignUp'
+import ToggleButtons from '../../components/user/UserToggleButtons'
+import './../../components/user/UserLogin.css'
+import User from './User'
+import { useAuth } from '../../auth/AuthContext'
 
 const UserLogin = () => {
   const navigate = useNavigate()
-
+  const location = useLocation()
   const [formData, setFormData] = useState({
-    email: '',
+    emailOrUsername: '',
     password: '',
   })
-
   const [showSignUp, setShowSignUp] = useState(false)
   const [showLogin, setShowLogin] = useState(true)
+  const { isLoggedIn, setIsLoggedIn } = useAuth()
+  const [token, setToken] = useState('')
+  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -22,10 +28,25 @@ const UserLogin = () => {
 
   const handleSubmit = async e => {
     e.preventDefault()
+    try {
+      const response = await axios.post('/api/user/login', formData)
+      const { token, email, username } = response.data
+      localStorage.setItem('token', token)
+      localStorage.setItem('email', email)
+      localStorage.setItem('username', username)
+      setToken(token)
+      setUsername(email)
+      setUsername(username)
+      // Redirect the user to the profile page
+      navigate('/user/profile')
+    } catch (error) {
+      console.error('Login failed:', error.response.data.msg)
+      // Handle login error (e.g., display error message to the user)
+    }
   }
 
   const handleSignUp = () => {
-    navigate('/signup')
+    navigate('/user/signup')
     setShowSignUp(true)
     setShowLogin(false)
   }
@@ -36,35 +57,47 @@ const UserLogin = () => {
   }
 
   return (
-    <div className='login-container'>
-      <h2 className='login-container-title'>Career Clique</h2>
+    <div className='main-container'>
       {showLogin && (
         <>
-          <h2 className='login-title'>Login</h2>
-          <form onSubmit={handleSubmit}>
-            <div className='form-group'>
-              <input type='email' name='email' placeholder='Email' value={formData.email} onChange={handleChange} className='input-field' />
-            </div>
-            <div className='form-group'>
-              <input
-                type='password'
-                name='password'
-                placeholder='Password'
-                value={formData.password}
-                onChange={handleChange}
-                className='input-field'
-              />
-            </div>
-            <div className='form-group'>
-              <button type='submit' className='login-button'>
-                Login
-              </button>
-            </div>
-          </form>
+          <div className='login-container'>
+            <h2 className='login-container-title'>Career Clique</h2>
+            <h2 className='login-title'>Login</h2>
+            <form onSubmit={handleSubmit}>
+              <div className='form-group'>
+                <input
+                  type='text'
+                  name='emailOrUsername'
+                  placeholder='Email or Username'
+                  value={formData.emailOrUsername}
+                  onChange={handleChange}
+                  className='input-field'
+                />
+              </div>
+              <div className='form-group'>
+                <input
+                  type='password'
+                  name='password'
+                  placeholder='Password'
+                  value={formData.password}
+                  onChange={handleChange}
+                  className='input-field'
+                />
+              </div>
+              <div className='form-group'>
+                <button type='submit' className='login-button'>
+                  Login
+                </button>
+              </div>
+            </form>
+            {!showSignUp && showLogin && <ToggleButtons onToggle={handleSignUp} buttonText='Sign Up' />}
+            {showSignUp && location.pathname === '/user/signup' && <UserSignUp onLogin={handleLogin} />}
+            <button className='login-return-to-home-button' onClick={() => navigate('/home')}>
+              Return To Home
+            </button>
+          </div>
         </>
       )}
-      {!showSignUp && showLogin && <ToggleButtons onToggle={handleSignUp} buttonText='Sign Up' />}
-      {showSignUp && <UserSignUp onLogin={handleLogin} />}
     </div>
   )
 }

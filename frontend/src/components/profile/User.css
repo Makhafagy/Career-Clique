@@ -1,0 +1,17 @@
+/* styles.css */
+.welcome-message {
+    font-size: 20px;
+    color: #ffffff; /* White text color */
+  }
+  
+  .username {
+    font-weight: bold;
+    font-size: 30px;
+    color: #ffd700; /* Gold text color */
+  }
+  
+  p {
+    font-weight: bold;
+    font-size: 20px;
+    color: #ffd700; /* Gold text color */
+  }
