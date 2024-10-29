@@ -42,18 +42,27 @@ Technologies Used
 - **Frontend:**
   - React.js
   - React Router
+  - Leaflet
   - Axios
 
-- **Backend:**
+- **Backend:**- 
+  - Node.js
   - Express.js
   - MongoDB
+  - Mongoose
+
+- **Authentication:**
+  - Auth0
   - JWT (JSON Web Tokens)
   - bcrypt
+ 
+- **API Integrations:**
+  - Zillow API
 
 Credits
 -------
 
-- This project was created by [Mahmoud Khafagy, Vong Chen, Marven Sahy, Govany Soliman].
+- This project was created by [Mahmoud Khafagy].
 
 License
 -------
