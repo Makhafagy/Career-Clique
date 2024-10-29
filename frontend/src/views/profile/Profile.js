@@ -56,9 +56,11 @@ const Profile = ({ username, email }) => {
 
   return (
     <div className='profile-container'>
-      <div className='profile-title'>
-        <h2>Profile</h2>
-      </div>
+      <h1 className='tab-title'>Profile</h1>
+      {/* Render authenticated content here */}
+      <p className='welcome-message'>
+        Welcome <span className='username'>{username}</span>.
+      </p>
       <div
         className='profile-picture-container'
         onMouseEnter={() => setIsHovered(true)}

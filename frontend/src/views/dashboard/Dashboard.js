@@ -3,22 +3,45 @@ import { useNavigate } from 'react-router-dom'
 import userProfileDefault from '../../components/assets/user-profile-default.svg'
 import '../../components/profile/User.css'
 import '../../components/dashboard/DashboardOptions.css'
-import csuf from '../../components/assets/titans_csuf.jpg'
 import AppHeader from '../header/AppHeader'
-import Education from '../../components/dashboard/Education'
 import Summary from '../../components/dashboard/Summary'
+import Education from '../../components/dashboard/Education'
+import UserLogout from '../user/UserLogout' // Import your Logout component
+import AuthService from '../user/AuthService' // Import your AuthService
 
 const Dashboard = () => {
   const [isContainerExpanded, setIsContainerExpanded] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
+  const [isTokenExpired, setIsTokenExpired] = useState(false) // State to track token expiration
   const navigate = useNavigate()
   const dashboardRef = useRef(null)
+  const summaryRef = useRef(null)
+  const educationRef = useRef(null)
+  const experienceRef = useRef(null)
+  const skillsRef = useRef(null)
+  const contactRef = useRef(null)
 
   const handleTabClick = tab => {
-    // Handle tab click action
-    if (tab === 'summary') {
-      // Scroll to summary section
-      dashboardRef.current.scrollIntoView({ behavior: 'smooth' })
+    const sectionRef =
+      tab === 'summary'
+        ? summaryRef.current
+        : tab === 'education'
+        ? educationRef.current
+        : tab === 'experience'
+        ? experienceRef.current
+        : tab === 'skills'
+        ? skillsRef.current
+        : tab === 'contact'
+        ? contactRef.current
+        : null
+
+    if (sectionRef) {
+      const sectionTop = sectionRef.getBoundingClientRect().top + window.scrollY
+      const offset = 60 // Adjust this value based on the height of the fixed tabs
+      window.scrollTo({
+        top: sectionTop - offset,
+        behavior: 'smooth',
+      })
     }
   }
 
@@ -33,6 +56,21 @@ const Dashboard = () => {
       document.removeEventListener('click', handleOutsideClick)
     }
   }, [])
+
+  useEffect(() => {
+    const checkTokenExpiration = () => {
+      const tokenExpiration = localStorage.getItem('tokenExpiration')
+      console.log(tokenExpiration)
+      if (tokenExpiration && Date.now() > Number(tokenExpiration)) {
+        console.log('session expired')
+        AuthService.logout() // Logout if token is expired
+        setIsTokenExpired(true) // Update state to indicate token expiration
+        navigate('/user/login')
+      }
+    }
+
+    checkTokenExpiration() // Check token expiration once when component mounts
+  }, [navigate])
 
   const handleOutsideClick = event => {
     if (dashboardRef.current && !dashboardRef.current.contains(event.target)) {
@@ -56,20 +94,10 @@ const Dashboard = () => {
           <img className='dashboard-picture' src={userProfileDefault} alt='Profile' />
         </div>
         <div className='main-container'>
-          <Summary />
-          <div className='education-section'>
-            <h2>Education</h2>
-            {/* Render multiple instances of EducationEntry */}
-            <Education
-              collegeName='California State University Of Fullerton'
-              imageUrl={csuf}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            />
-            <Education collegeName='Orange Coast College' imageUrl={csuf} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
-            {/* Add more EducationEntry components as needed */}
-          </div>
-          {/* Additional information to display when hovering over the education entry */}
+          <h1 className='tab-title'>Dashboard</h1>
+          {!isTokenExpired && <Summary ref={summaryRef} />}
+          {!isTokenExpired && <Education ref={educationRef} />}
+          {/* Add other sections here */}
           {isHovered && <div className='education-info'>{/* Additional information for the hovered education entry */}</div>}
         </div>
 
@@ -95,6 +123,9 @@ const Dashboard = () => {
           </div>
         )}
       </div>
+
+      {/* Render Logout component if token is expired */}
+      {isTokenExpired && <UserLogout />}
     </div>
   )
 }
