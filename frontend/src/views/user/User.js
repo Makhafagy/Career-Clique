@@ -1,58 +1,70 @@
+// User.js
 import React, { useState, useEffect } from 'react'
-import AuthService from './AuthService' // Import your AuthService
+import AuthService from './AuthService'
 import UserLogout from './UserLogout'
 import AppHeader from '../header/AppHeader'
 import UserLogin from './UserLogin'
+import Profile from '../profile/Profile' // Import the Profile component
 import '../../components/profile/User.css'
 
 const User = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Function to check authentication status
     const checkAuthentication = async () => {
       try {
-        const token = AuthService.getToken() // Retrieve token from AuthService
-        const storedUsername = AuthService.getUsername() // Retrieve username from AuthService
+        const token = AuthService.getToken()
+        const storedUsername = AuthService.getUsername()
+        const storedEmail = AuthService.getEmail()
 
         if (token) {
-          // Token exists, user is logged in
           setIsLoggedIn(true)
-          setUsername(storedUsername) // Set the username state
+          setUsername(storedUsername)
+          setEmail(storedEmail)
         } else {
-          // Token does not exist, user is not logged in
           setIsLoggedIn(false)
-          setUsername('') // Clear the username state
+          setUsername('')
+          setEmail(storedEmail)
         }
       } catch (error) {
         console.error('Error checking authentication:', error)
-        // Handle error, maybe redirect to login page
+      } finally {
+        setIsLoading(false)
       }
     }
 
-    // Call checkAuthentication function when component mounts
     checkAuthentication()
-  }, []) // Empty dependency array ensures this effect runs only once on component mount
+  }, [])
 
   return (
-    <div className='main-container'>
-      <AppHeader />
-      {isLoggedIn ? (
-        <div>
-          {/* Render authenticated content here */}
-          <p className='welcome-message'>
-            Welcome <span className='username'>{username}</span>.
-          </p>
-          <UserLogout /> {/* Include the UserLogout component */}
-        </div>
-      ) : (
-        <div>
-          {/* Render content for users not logged in */}
-          <p>Please log in to access all features.</p>
-          <UserLogin />
-        </div>
-      )}
+    <div className='outer-container'>
+      <div className='main-container'>
+        <AppHeader />
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : isLoggedIn ? (
+          <div>
+            <div className='profile-content-container'>
+              {/* Render authenticated content here */}
+              <p className='welcome-message'>
+                Welcome <span className='username'>{username}</span>.
+              </p>
+              {/* Render Profile component */}
+              <Profile username={username} email={email} />
+              <UserLogout />
+            </div>
+          </div>
+        ) : (
+          <div>
+            {/* Render content for users not logged in */}
+            <p>Please log in to access all features.</p>
+            <UserLogin />
+          </div>
+        )}
+      </div>
     </div>
   )
 }
