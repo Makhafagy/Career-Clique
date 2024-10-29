@@ -1,4 +1,4 @@
-/* components/MainContainer.css */
+/* components/Index.css */
 
 html, body {
     margin: 0;
@@ -9,50 +9,94 @@ html, body {
   .main-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Set minimum height to fill up the viewport */
+    min-height: 100vh;
     padding: 20px;
-    background-color: #131313; /* Set darker background color for the main container */
+    background-color: #131313;
   }
   
-  .inner-container {
-    background-color: #333; /* Set darker background color for the inner container */
-    padding: 20px;
+  /* .body-container {
+    background-color: #1f1e1e;
+    /* padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+  } */
+
+  .tab-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }  
+  
+  .tab-placeholder {
+    width: 200px;
   }
   
-  .title {
-    font-size: 2.5rem; /* Make the title bigger */
-    color: #fff; /* Set text color to white for better contrast in dark mode */
+.title {
+    font-size: 4.5rem;
+    color: #fff;
+    padding: 20px;
+    border-bottom: 2px solid #fff;
+    margin-bottom: 20px;
+  }
+  
+  .tab-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }  
+  
+  .tab-placeholder {
+    width: 200px;
   }
   
   .tab {
-    padding: 12px 24px; /* Add padding to the tabs */
-    font-size: 18px; /* Increase font size for the tabs */
+    padding: 20px 80px;
+    font-size: 24px;
     border-radius: 5px;
     background-color: #000000;
     color: #fff;
     cursor: pointer;
-    margin-right: 10px; /* Add space between tabs */
-    transition: background-color 0.3s ease; /* Add transition for smoother hover effect */
+    transition: background-color 0.3s ease;
   }
   
+  
   .tab:hover {
-    background-color: #e68300; /* Change background color on hover */
+    background-color: #e68300;
   }
   
   .tab.active {
-    background-color: #ff9500; /* Change background color for active tab */
+    background-color: #ff9500;
   }
-
-  /* components/Index.css */
-
+  
   .home-message {
-    font-size: 24px; /* Increase font size */
-    color: #fff; /* Set text color to white */
-    text-align: center; /* Center align text */
-    margin-top: 20px; /* Add some top margin */
-    font-style: italic; /* Apply italic style */
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    font-style: italic;
   }
+  
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+    margin: 0 auto;
+  }
+  
+  .login-button {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .signup-button {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  
   
   

@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom' // Import useNavigate instead of useHistory
-import '../../../components/user/UserLogin.css' // Import the CSS file for styling
+import { useNavigate } from 'react-router-dom'
+import './../../components/user/UserSignUp.css'
 
-const UserLogin = () => {
-  const navigate = useNavigate() // Initialize useNavigate hook
+const UserSignUp = ({ onLogin }) => {
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     email: '',
     password: '',
+    confirmPassword: '',
   })
 
   const handleChange = e => {
@@ -17,17 +18,16 @@ const UserLogin = () => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    // Handle form submission
   }
 
-  const handleSignUp = () => {
-    // Navigate to the sign-up page
-    navigate('/signup')
+  const handleLogin = () => {
+    navigate('/login')
+    onLogin()
   }
 
   return (
-    <div className='login-container'>
-      <h2 className='login-title'>Login</h2>
+    <div>
+      <h2 className='signup-title'>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className='form-group'>
           <input type='email' name='email' placeholder='Email' value={formData.email} onChange={handleChange} className='input-field' />
@@ -36,19 +36,28 @@ const UserLogin = () => {
           <input type='password' name='password' placeholder='Password' value={formData.password} onChange={handleChange} className='input-field' />
         </div>
         <div className='form-group'>
-          <button type='submit' className='login-button'>
-            Login
+          <input
+            type='password'
+            name='confirmPassword'
+            placeholder='Confirm Password'
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            className='input-field'
+          />
+        </div>
+        <div className='form-group'>
+          <button type='submit' className='signup-button'>
+            Sign Up
           </button>
         </div>
       </form>
-      {/* Add the sign-up button */}
       <div className='form-group'>
-        <button onClick={handleSignUp} className='signup-button'>
-          Sign Up
+        <button onClick={handleLogin} className='back-to-login-button'>
+          Back to Login
         </button>
       </div>
     </div>
   )
 }
 
-export default UserLogin
+export default UserSignUp
